@@ -1,0 +1,56 @@
+<template>
+    <div class="newslist-container">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-left" :src="item.img_url">
+                    <div class="mui-media-body">
+                        <h2>{{item.title}}</h2>
+                        <p class='mui-ellipsis'>{{item.add_time}}</p>
+                        <p class="click_num">点击：{{item.click}} 次</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+    export default {
+        data(){
+            return {
+                newslist:[]
+            }
+        },
+        methods:{
+            getNewlist(){
+                this.$http.get('http://127.0.0.1:3000/api/getnewslist').then(function(res) {
+                    if (res.body.status==0) {
+                        this.newslist = res.body.message
+                    }
+                })
+            }
+        },
+        created(){
+            this.getNewlist()
+        }
+
+    }
+</script>
+
+<style lang="scss" scoped>
+    .newslist-container{
+        .mui-table-view h2{
+            font-size: 13px;
+        }
+        .mui-ellipsis{
+            font-size: 12px;
+            float: left;
+        }
+        .click_num{
+            color: blue;
+            float: right;
+            font-size: 12px;
+        }
+    }
+</style>
