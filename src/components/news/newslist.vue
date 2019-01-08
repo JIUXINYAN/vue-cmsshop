@@ -2,14 +2,14 @@
     <div class="newslist-container">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
-                <a href="javascript:;">
+                <router-link :to="'/home/newsdetail/'+item.id">
                     <img class="mui-media-object mui-pull-left" :src="item.img_url">
                     <div class="mui-media-body">
                         <h2>{{item.title}}</h2>
-                        <p class='mui-ellipsis'>{{item.add_time}}</p>
+                        <p class='mui-ellipsis'>{{item.add_time|dateFormat}}</p>
                         <p class="click_num">点击：{{item.click}} 次</p>
                     </div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -24,7 +24,7 @@
         },
         methods:{
             getNewlist(){
-                this.$http.get('http://127.0.0.1:3000/api/getnewslist').then(function(res) {
+                this.$http.get('api/getnewslist').then(function(res) {
                     if (res.body.status==0) {
                         this.newslist = res.body.message
                     }
