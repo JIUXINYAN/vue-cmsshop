@@ -38,6 +38,7 @@ import { Header,Button } from 'mint-ui';
 import 'mint-ui/lib/style.css';
 Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
+Vue.use(Lazyload);
 
 //按需导入轮播图所需的两个组件
 import { Swipe, SwipeItem,Lazyload } from 'mint-ui';
@@ -53,10 +54,17 @@ import 'vant/lib/index.css';
 Vue.use(Tab).use(Tabs);
 
 
+
+
 //引入mui的css样式
 import './lib/mui/css/mui.min.css';
 //引入mui扩展的字体文件
 import './lib/mui/css/icons-extra.css';
+
+
+//引入图片预览插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview);
 
 
 //导入app.vue根组件

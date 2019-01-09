@@ -31,7 +31,7 @@
             getComments(){
                 this.$http.get('api/getcomments/'+this.id+'?pageindex='+this.pageindex).then(function(res) {
                     if (res.body.status == 0) {
-                        if(res.body.message.length==0){
+                        if(res.body.message.length==0&&this.pageindex!=1){
                             Toast('到底啦');
                         }
                         this.comments = this.comments.concat(res.body.message);
@@ -83,6 +83,7 @@
             color: #000;
             line-height: 16px;
             text-align: left;
+            margin-bottom: 10px;
         }
         .list{
             margin: 10px 0;

@@ -43,14 +43,18 @@
         .mui-table-view h2{
             font-size: 13px;
         }
-        .mui-ellipsis{
-            font-size: 12px;
-            float: left;
+        .mui-media-body{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .mui-ellipsis{
+                font-size: 12px;
+            }
+            .click_num{
+                color: blue;
+                font-size: 12px;
+            }
         }
-        .click_num{
-            color: blue;
-            float: right;
-            font-size: 12px;
-        }
+        
     }
 </style>
